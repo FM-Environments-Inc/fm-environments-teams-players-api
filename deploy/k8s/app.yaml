@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fm-environments-teams-players-api-deployment
+  labels:
+    app: fm-environments-teams-players-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fm-environments-teams-players-api
+  template:
+    metadata:
+      labels:
+        app: fm-environments-teams-players-api
+    spec:
+      containers:
+      - name: fm-environments-teams-players-api
+        image: kuzyacat/fm-environments-teams-players-api
+        ports:
+        - containerPort: 3006
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-password 
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-config
+              key: mongo-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fm-environments-teams-players-service
+spec:
+  type: NodePort
+  selector:
+    app: fm-environments-teams-players
+  ports:
+    - protocol: TCP
+      port: 3006
+      targetPort: 3006
+      nodePort: 30106
