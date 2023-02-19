@@ -19,8 +19,8 @@ export class RegionsRepository {
   }
 
   async create(region: Region): Promise<Region> {
-    const newUser = new this.regionModel(region);
-    return newUser.save();
+    const newRegion = new this.regionModel(region);
+    return newRegion.save();
   }
 
   async findOneAndUpdate(
