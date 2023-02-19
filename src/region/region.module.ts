@@ -11,6 +11,6 @@ import { RegionsRepository } from './region.repository';
     MongooseModule.forFeature([{ name: Region.name, schema: RegionSchema }]),
   ],
   providers: [RegionService, RegionResolver, RegionsRepository],
-  exports: [RegionService],
+  exports: [RegionService, RegionsRepository],
 })
 export class RegionModule {}

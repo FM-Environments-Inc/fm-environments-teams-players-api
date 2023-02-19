@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 
 import { RegionModule } from './region/region.module';
+import { CountryModule } from './country/country.module';
 import { DB_CONNECTION_STRING } from './config/database';
 
 @Module({
@@ -12,6 +13,7 @@ import { DB_CONNECTION_STRING } from './config/database';
       autoSchemaFile: true,
     }),
     RegionModule,
+    CountryModule,
   ],
   controllers: [],
   providers: [],
