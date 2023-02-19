@@ -1,0 +1,11 @@
+query region($name: String!) {
+  region(name: $name) {
+    name
+  }
+}
+
+query regions {
+  regions {
+    name
+  }
+}
