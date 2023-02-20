@@ -24,10 +24,10 @@ export class CountryRepository {
   }
 
   async findOneAndUpdate(
-    regionsFilterQuery: FilterQuery<Country>,
-    region: Partial<Country>,
+    countryFilterQuery: FilterQuery<Country>,
+    country: Partial<Country>,
   ): Promise<Country> {
-    return this.countryModel.findOneAndUpdate(regionsFilterQuery, region, {
+    return this.countryModel.findOneAndUpdate(countryFilterQuery, country, {
       new: true,
     });
   }
