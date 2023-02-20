@@ -21,3 +21,49 @@ query country($name: String!) {
     name
   }
 }
+
+query players(
+  $environment: String!,
+  $role: String,
+  $page: Float,
+  $limit: Float,
+  $order: String,
+  $sortBy: String,
+  $country: String
+) {
+    players(
+      environment: $environment,
+      page: $page,
+      limit: $limit,
+      order: $order,
+    	sortBy: $sortBy,
+      country: $country,
+      role: $role
+    ) {
+      firstName,
+    	lastName,
+    	age,
+    	_id,
+    	photo,
+    	country { name },
+    	evaluation,
+    	position,
+    }
+}
+
+query player(
+  $id: Float!
+) {
+    player(
+      id: $id,
+    ) {
+      firstName,
+    	lastName,
+    	age,
+    	_id,
+    	photo,
+    	country { name },
+    	evaluation,
+    	position,
+    }
+}

@@ -16,3 +16,13 @@ export class ResponseQL {
   @Field()
   message: string;
 }
+
+export type PlayerRatings = {
+  overall: number;
+  pace?: number;
+  shot?: number;
+  pass?: number;
+  dribbling?: number;
+  defending?: number;
+  physics?: number;
+};
