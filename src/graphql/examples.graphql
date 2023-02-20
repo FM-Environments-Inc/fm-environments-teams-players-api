@@ -67,3 +67,49 @@ query player(
     	position,
     }
 }
+
+query teams(
+  $environment: String!,
+  $isNational: Boolean,
+  $page: Float,
+  $limit: Float,
+  $order: String!,
+  $sortBy: String!,
+  $country: String,
+  $region: String
+) {
+    teams(
+      environment: $environment,
+      isNational: $isNational,
+      page: $page,
+      limit: $limit,
+      order: $order,
+    	sortBy: $sortBy,
+      country: $country,
+      region: $region
+    ) {
+      name,
+    	logo,
+    	_id,
+    	country { name },
+    	division,
+    	evaluation,
+    	players { _id, position, reference { firstName, lastName } }
+    }
+}
+
+query team(
+  $id: String!,
+) {
+    team(
+      id: $id,
+    ) {
+      name,
+    	logo,
+    	_id,
+    	country { name },
+    	division,
+    	evaluation,
+    	players { _id, position, reference { firstName, lastName } }
+    }
+}
