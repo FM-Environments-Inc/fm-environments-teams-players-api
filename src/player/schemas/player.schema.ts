@@ -68,6 +68,10 @@ export class Player {
 
   @Field()
   @Prop({ required: true })
+  height: number = 180;
+
+  @Field()
+  @Prop({ required: true })
   age: number;
 
   @Field()
@@ -132,6 +136,14 @@ export class Player {
   @Prop()
   @Field()
   deletedAt: Date | null = null;
+
+  @Prop()
+  @Field()
+  createdAt: Date = new Date();
+
+  @Prop()
+  @Field()
+  updatedAt: Date = new Date();
 }
 
 export const PlayerSchema = SchemaFactory.createForClass(Player);

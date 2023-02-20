@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { RegionModule } from './region/region.module';
 import { CountryModule } from './country/country.module';
 import { PlayerModule } from './player/player.module';
+import { TeamModule } from './team/team.module';
 
 import { DB_CONNECTION_STRING } from './config/database';
 
@@ -17,6 +18,7 @@ import { DB_CONNECTION_STRING } from './config/database';
     RegionModule,
     CountryModule,
     PlayerModule,
+    TeamModule,
   ],
   controllers: [],
   providers: [],
