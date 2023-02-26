@@ -93,6 +93,10 @@ export class Player {
   @Prop({ required: true })
   environment: string;
 
+  @Prop()
+  @Field()
+  features: string = '';
+
   @Prop({ required: true })
   @Field()
   role: PLAYER_ROLE;

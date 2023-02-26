@@ -4,5 +4,5 @@ import { IsNotEmpty } from 'class-validator';
 @ArgsType()
 export class GetTeamArgs {
   @Field()
-  id: string;
+  _id: string;
 }

@@ -22,10 +22,12 @@
     "migrate:up": "./node_modules/.bin/migrate up"
   },
   "dependencies": {
+    "@apollo/federation": "^0.38.1",
+    "@apollo/subgraph": "^2.3.2",
     "@nestjs/apollo": "^10.2.0",
     "@nestjs/common": "^9.3.9",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/graphql": "^9.1.2",
+    "@nestjs/graphql": "^10.2.0",
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
     "@types/graphql": "^14.5.0",
@@ -33,7 +35,7 @@
     "apollo-server-express": "^3.11.1",
     "class-validator": "^0.14.0",
     "dotenv": "^16.0.3",
-    "graphql": "^15.8.0",
+    "graphql": "^16.6.0",
     "migrate-mongoose": "^4.0.0",
     "mongoose": "^6.9.2",
     "reflect-metadata": "^0.1.13",

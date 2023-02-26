@@ -4,5 +4,5 @@ import { IsNotEmpty } from 'class-validator';
 @ArgsType()
 export class GetPlayerArgs {
   @Field()
-  id: string;
+  _id: string;
 }
