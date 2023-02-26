@@ -27,7 +27,7 @@ export class CountryResolver {
   }
 
   @Mutation(() => Country)
-  async createEnvironment(
+  async createCountry(
     @Args('createCountryData') createCountryData: CreateCountryInput,
   ): Promise<Country> {
     const country = await this.countryService.createCountry(createCountryData);

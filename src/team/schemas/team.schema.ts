@@ -22,6 +22,15 @@ export class TeamPlayers {
 
   @Field()
   createdAt: Date = new Date();
+
+  @Field()
+  isPenaltyShooter: boolean = false;
+
+  @Field()
+  isFreeKicker: boolean = false;
+
+  @Field()
+  isCornerKicker: boolean = false;
 }
 
 @Schema()
@@ -74,6 +83,19 @@ export class Team {
       },
       createdAt: {
         type: Date,
+        default: new Date(),
+      },
+      isPenaltyShooter: {
+        type: Boolean,
+        default: false,
+      },
+      isFreeKicker: {
+        type: Boolean,
+        default: false,
+      },
+      isCornerKicker: {
+        type: Boolean,
+        default: false,
       },
     }),
   )

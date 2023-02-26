@@ -52,10 +52,10 @@ query players(
 }
 
 query player(
-  $id: Float!
+  $_id: String!
 ) {
     player(
-      id: $id,
+      _id: $_id,
     ) {
       firstName,
     	lastName,
@@ -99,10 +99,10 @@ query teams(
 }
 
 query team(
-  $id: String!,
+  $_id: String!,
 ) {
     team(
-      id: $id,
+      _id: $_id,
     ) {
       name,
     	logo,
