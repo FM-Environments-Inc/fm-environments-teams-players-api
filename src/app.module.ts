@@ -11,6 +11,7 @@ import { RegionModule } from './region/region.module';
 import { CountryModule } from './country/country.module';
 import { PlayerModule } from './player/player.module';
 import { TeamModule } from './team/team.module';
+import { ImportModule } from './import/import.module';
 
 import { DB_CONNECTION_STRING } from './config/database';
 
@@ -29,6 +30,7 @@ import { DB_CONNECTION_STRING } from './config/database';
     CountryModule,
     PlayerModule,
     TeamModule,
+    ImportModule,
   ],
   controllers: [],
   providers: [],

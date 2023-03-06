@@ -37,7 +37,7 @@ export class TeamPlayers {
 @ObjectType()
 export class Team {
   @Field()
-  _id: string;
+  readonly _id?: string;
 
   @Field()
   @Prop({ required: true })
@@ -48,12 +48,12 @@ export class Team {
   logo?: string;
 
   @Field()
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Country' }] })
-  country?: Country;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Country' })
+  country: Country;
 
-  @Field()
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Region' }] })
-  region: Region;
+  @Field({ nullable: true })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Region' })
+  region?: Region;
 
   @Field()
   @Prop({ required: true })
@@ -99,23 +99,23 @@ export class Team {
       },
     }),
   )
-  players: Record<string, number> = {};
+  players?: Record<string, number> = {};
 
   @Prop()
   @Field()
-  createdAt: Date = new Date();
+  createdAt?: Date = new Date();
 
   @Prop()
   @Field()
-  updatedAt: Date = new Date();
+  updatedAt?: Date = new Date();
 
   @Prop()
   @Field()
-  deletedAt: Date | null = null;
+  deletedAt?: Date | null = null;
 
   @Prop()
   @Field()
-  archivedAt: Date | null = null;
+  archivedAt?: Date | null = null;
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);

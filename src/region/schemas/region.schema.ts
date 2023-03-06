@@ -8,6 +8,9 @@ export type RegionDocument = Region & Document;
 @ObjectType()
 export class Region {
   @Field()
+  readonly _id?: string;
+
+  @Field()
   @Prop({ required: true })
   name: string;
 }

@@ -14,27 +14,29 @@ export class TeamRepository {
 
   async find(
     teamsFilterQuery: FilterQuery<Team>,
-    sortOptions: string,
+    sortOptions = '',
     skip = 0,
-    limit = 30,
+    limit = 1000,
   ): Promise<Team[]> {
     return this.teamModel
       .find(teamsFilterQuery)
       .sort(sortOptions)
       .skip(skip)
-      .limit(limit);
+      .limit(limit)
+      .lean();
   }
 
-  create(team: Team): Promise<Team> {
-    const newTeam = new this.teamModel(team);
+  create(team: Partial<Team>, options): Promise<Team> {
+    const newTeam = new this.teamModel(team, options);
     return newTeam.save();
   }
 
   async updateOne(
     teamFilterQuery: FilterQuery<Team>,
     team: Partial<Team>,
+    options,
   ): Promise<void> {
-    await this.teamModel.updateOne(teamFilterQuery, team);
+    await this.teamModel.updateOne(teamFilterQuery, team, options);
   }
 
   async findOneAndUpdate(

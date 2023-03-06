@@ -22,12 +22,6 @@ export class CountryService {
   }
 
   async createCountry(countryInput: CreateCountryInput): Promise<Country> {
-    const region = await this.regionsRepository.findOne({
-      name: countryInput.region,
-    });
-    if (!region) {
-      return null;
-    }
-    return this.countryRepository.create({ ...countryInput, region });
+    return this.countryRepository.create({ ...countryInput });
   }
 }
