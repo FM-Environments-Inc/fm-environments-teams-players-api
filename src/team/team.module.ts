@@ -17,5 +17,6 @@ import { PlayerModule } from '../player/player.module';
     PlayerModule,
   ],
   providers: [TeamResolver, TeamRepository, TeamService],
+  exports: [TeamRepository],
 })
 export class TeamModule {}

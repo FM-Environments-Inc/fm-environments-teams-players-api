@@ -11,11 +11,11 @@ export type CountryDocument = Country & Document;
 @ObjectType()
 export class Country {
   @Field()
+  readonly _id?: string;
+
+  @Field()
   @Prop({ required: true })
   name: string;
-
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Region' }] })
-  region: Region;
 }
 
 export const CountrySchema = SchemaFactory.createForClass(Country);
