@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
 import { ObjectType, Field } from '@nestjs/graphql';
 import mongoose, { Document } from 'mongoose';
+import { Transform } from 'class-transformer';
 
 import { Country } from '../../country/schemas/country.schema';
 import { Region } from '../../region/schemas/region.schema';
@@ -37,6 +38,7 @@ export class TeamPlayers {
 @ObjectType()
 export class Team {
   @Field()
+  @Transform(({ value }) => value.toString())
   readonly _id?: string;
 
   @Field()
