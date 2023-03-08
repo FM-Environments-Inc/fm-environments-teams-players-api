@@ -33,7 +33,7 @@ export class TeamRepository {
 
   async updateOne(
     teamFilterQuery: FilterQuery<Team>,
-    team: Partial<Team>,
+    team,
     options,
   ): Promise<void> {
     await this.teamModel.updateOne(teamFilterQuery, team, options);
