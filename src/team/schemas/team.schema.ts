@@ -75,33 +75,35 @@ export class Team {
 
   @Field(() => TeamPlayers)
   @Prop(
-    raw({
-      reference: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Player',
+    raw([
+      {
+        reference: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Player',
+        },
+        position: {
+          type: String,
+        },
+        createdAt: {
+          type: Date,
+          default: new Date(),
+        },
+        isPenaltyShooter: {
+          type: Boolean,
+          default: false,
+        },
+        isFreeKicker: {
+          type: Boolean,
+          default: false,
+        },
+        isCornerKicker: {
+          type: Boolean,
+          default: false,
+        },
       },
-      position: {
-        type: String,
-      },
-      createdAt: {
-        type: Date,
-        default: new Date(),
-      },
-      isPenaltyShooter: {
-        type: Boolean,
-        default: false,
-      },
-      isFreeKicker: {
-        type: Boolean,
-        default: false,
-      },
-      isCornerKicker: {
-        type: Boolean,
-        default: false,
-      },
-    }),
+    ]),
   )
-  players?: Record<string, number> = {};
+  players?: Array<Record<string, string | Date | boolean>> = [];
 
   @Prop()
   @Field()
