@@ -27,7 +27,7 @@ export class ImportTeamsService {
     @InjectConnection() private readonly connection: mongoose.Connection,
   ) {}
 
-  async parseTeamsCSV(
+  async parseCSV(
     file: Promise<FileUpload>,
     environment: string,
   ): Promise<boolean> {

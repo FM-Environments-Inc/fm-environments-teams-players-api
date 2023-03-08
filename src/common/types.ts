@@ -35,3 +35,13 @@ export interface FileUpload {
   encoding: string;
   createReadStream: () => Stream;
 }
+
+export interface IPlayerRatings {
+  overall: number;
+  pace?: number;
+  shot?: number;
+  pass?: number;
+  dribbling?: number;
+  defending?: number;
+  physics?: number;
+}

@@ -42,6 +42,7 @@ type Player {
   active: Boolean!
   country: Country!
   features: String!
+  foot: String!
   role: String!
   position: String!
   ratings: PlayerRatings!
@@ -97,6 +98,7 @@ type Query {
 type Mutation {
   createCountry(createCountryData: CreateCountryInput!): Country!
   importTeams(importTeamsData: ImportTeamsInput!): Boolean!
+  importPlayers(importPlayersData: ImportPlayersInput!): Boolean!
 }
 
 input CreateCountryInput {
@@ -111,3 +113,8 @@ input ImportTeamsInput {
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+
+input ImportPlayersInput {
+  environment: String!
+  file: Upload!
+}

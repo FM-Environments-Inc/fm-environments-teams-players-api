@@ -27,16 +27,17 @@ export class PlayerRepository {
       .limit(limit);
   }
 
-  create(player: Player): Promise<Player> {
-    const newPlayer = new this.playerModel(player);
+  create(player: Partial<Player>, options): Promise<Player> {
+    const newPlayer = new this.playerModel(player, options);
     return newPlayer.save();
   }
 
   async updateOne(
     playerFilterQuery: FilterQuery<Player>,
     player: Partial<Player>,
+    options,
   ): Promise<void> {
-    await this.playerModel.updateOne(playerFilterQuery, player);
+    await this.playerModel.updateOne(playerFilterQuery, player, options);
   }
 
   async findOneAndUpdate(

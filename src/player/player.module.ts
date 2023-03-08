@@ -13,5 +13,6 @@ import { CountryModule } from '../country/country.module';
     CountryModule,
   ],
   providers: [PlayerResolver, PlayerRepository, PlayerService],
+  exports: [PlayerRepository],
 })
 export class PlayerModule {}

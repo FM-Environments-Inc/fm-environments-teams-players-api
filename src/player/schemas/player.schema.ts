@@ -3,7 +3,7 @@ import { ObjectType, Field } from '@nestjs/graphql';
 import mongoose, { Document } from 'mongoose';
 
 import { Country } from '../../country/schemas/country.schema';
-import { PLAYER_ROLE, PLAYER_POSITION } from '../../common/constants';
+import { PLAYER_ROLE, PLAYER_POSITION, FOOT } from '../../common/constants';
 
 export type PlayerDocument = Player & Document;
 
@@ -87,7 +87,7 @@ export class Player {
   active: boolean = true;
 
   @Field()
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Country' }] })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Country' })
   country: Country;
 
   @Prop({ required: true })
@@ -96,6 +96,10 @@ export class Player {
   @Prop()
   @Field()
   features: string = '';
+
+  @Prop({ type: String, default: FOOT.RIGHT, enum: Object.values(FOOT) })
+  @Field()
+  foot: FOOT = FOOT.RIGHT;
 
   @Prop({ required: true })
   @Field()
@@ -139,7 +143,7 @@ export class Player {
 
   @Prop()
   @Field()
-  deletedAt: Date | null = null;
+  deletedAt?: Date | null = null;
 
   @Prop()
   @Field()
