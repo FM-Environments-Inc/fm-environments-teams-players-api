@@ -8,26 +8,35 @@ import { PLAYER_ROLE, PLAYER_POSITION, FOOT } from '../../common/constants';
 export type PlayerDocument = Player & Document;
 
 @ObjectType()
+export class PlayerTeam {
+  @Field()
+  name: string;
+
+  @Field()
+  logo?: string;
+}
+
+@ObjectType()
 export class PlayerRatings {
   @Field()
   overall: number;
 
-  @Field()
+  @Field({ nullable: true })
   pace?: number;
 
-  @Field()
+  @Field({ nullable: true })
   shot?: number;
 
-  @Field()
+  @Field({ nullable: true })
   pass?: number;
 
-  @Field()
+  @Field({ nullable: true })
   dribbling?: number;
 
-  @Field()
+  @Field({ nullable: true })
   defending?: number;
 
-  @Field()
+  @Field({ nullable: true })
   physics?: number;
 }
 
@@ -101,15 +110,15 @@ export class Player {
   @Field()
   foot: FOOT = FOOT.RIGHT;
 
-  @Prop({ required: true })
-  @Field()
+  @Prop()
+  @Field({ nullable: true })
   role: PLAYER_ROLE;
 
   @Prop({ required: true })
   @Field()
   position: PLAYER_POSITION;
 
-  @Field(() => PlayerRatings)
+  @Field(() => PlayerRatings, { nullable: true })
   @Prop(
     raw({
       overall: {
@@ -138,7 +147,7 @@ export class Player {
   ratings: Record<string, number> = {};
 
   @Prop({ type: mongoose.Schema.Types.Mixed })
-  @Field(() => ProbabilityBonuses)
+  @Field(() => ProbabilityBonuses, { nullable: true })
   probabilityBonuses: Record<string, number> = {};
 
   @Prop()
@@ -152,6 +161,9 @@ export class Player {
   @Prop()
   @Field()
   updatedAt: Date = new Date();
+
+  @Field(() => PlayerTeam, { nullable: true })
+  playerTeam: PlayerTeam;
 }
 
 export const PlayerSchema = SchemaFactory.createForClass(Player);

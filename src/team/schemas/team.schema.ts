@@ -18,7 +18,7 @@ export class TeamPlayers {
   @Field()
   position: PLAYER_POSITION;
 
-  @Field()
+  @Field(() => Player)
   reference: Player;
 
   @Field()

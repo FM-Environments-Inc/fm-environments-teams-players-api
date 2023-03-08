@@ -10,14 +10,14 @@ export class GetPlayersArgs {
   @Field()
   environment: string;
 
-  @Field()
-  country?: string | null = null;
+  @Field({ nullable: true })
+  country?: string;
 
   @Field()
   sortBy?: string = 'evaluation';
 
-  @Field()
-  role?: PLAYER_ROLE | null = null;
+  @Field({ nullable: true })
+  role?: PLAYER_ROLE;
 
   @Field()
   order?: SortOrder = 'DESC';

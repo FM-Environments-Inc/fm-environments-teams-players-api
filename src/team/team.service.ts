@@ -56,6 +56,9 @@ export class TeamService {
     const sortOptions: string = sortOrder === -1 ? `-${sortBy}` : sortBy;
     const query = { environment, countryObj, regionObj, isNational };
 
-    return this.teamRepository.find(query, sortOptions, skip, limit);
+    let teams = await this.teamRepository.find(query, sortOptions, skip, limit);
+    teams = await this.teamRepository.populate(teams, [{ path: 'country' }]);
+
+    return teams;
   }
 }

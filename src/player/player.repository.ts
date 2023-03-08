@@ -24,7 +24,8 @@ export class PlayerRepository {
       .find(playersFilterQuery)
       .sort(sortOptions)
       .skip(skip)
-      .limit(limit);
+      .limit(limit)
+      .lean();
   }
 
   create(player: Partial<Player>, options): Promise<Player> {
@@ -47,5 +48,12 @@ export class PlayerRepository {
     return this.playerModel.findOneAndUpdate(playerFilterQuery, player, {
       new: true,
     });
+  }
+
+  async populate(
+    players: Array<Player>,
+    populateOptions,
+  ): Promise<Array<Player>> {
+    return this.playerModel.populate(players, populateOptions);
   }
 }

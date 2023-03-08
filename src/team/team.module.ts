@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { TeamService } from './team.service';
@@ -14,7 +14,7 @@ import { PlayerModule } from '../player/player.module';
     MongooseModule.forFeature([{ name: Team.name, schema: TeamSchema }]),
     CountryModule,
     RegionModule,
-    PlayerModule,
+    forwardRef(() => PlayerModule),
   ],
   providers: [TeamResolver, TeamRepository, TeamService],
   exports: [TeamRepository],
