@@ -47,4 +47,8 @@ export class TeamRepository {
       new: true,
     });
   }
+
+  async populate(teams: Array<Team>, populateOptions): Promise<Array<Team>> {
+    return this.teamModel.populate(teams, populateOptions);
+  }
 }

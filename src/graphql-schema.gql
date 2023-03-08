@@ -12,14 +12,19 @@ type Country {
   name: String!
 }
 
+type PlayerTeam {
+  name: String!
+  logo: String!
+}
+
 type PlayerRatings {
   overall: Float!
-  pace: Float!
-  shot: Float!
-  pass: Float!
-  dribbling: Float!
-  defending: Float!
-  physics: Float!
+  pace: Float
+  shot: Float
+  pass: Float
+  dribbling: Float
+  defending: Float
+  physics: Float
 }
 
 type ProbabilityBonuses {
@@ -43,13 +48,14 @@ type Player {
   country: Country!
   features: String!
   foot: String!
-  role: String!
+  role: String
   position: String!
-  ratings: PlayerRatings!
-  probabilityBonuses: ProbabilityBonuses!
+  ratings: PlayerRatings
+  probabilityBonuses: ProbabilityBonuses
   deletedAt: DateTime!
   createdAt: DateTime!
   updatedAt: DateTime!
+  playerTeam: PlayerTeam
 }
 
 """
@@ -90,7 +96,7 @@ type Query {
   country(name: String!): Country
   countries: [Country!]!
   player(_id: String!): Player
-  players(environment: String!, country: String!, sortBy: String! = "evaluation", role: String!, order: String! = "DESC", page: Float! = 1, limit: Float! = 30): [Player!]!
+  players(environment: String!, country: String, sortBy: String! = "evaluation", role: String, order: String! = "DESC", page: Float! = 1, limit: Float! = 30): [Player!]!
   team(_id: String!): Team
   teams(environment: String!, isNational: Boolean! = false, country: String = null, region: String = null, sortBy: String = "evaluation", order: String = "DESC", page: Float! = 1, limit: Float! = 30): [Team!]!
 }
