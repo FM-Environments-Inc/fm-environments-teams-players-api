@@ -167,3 +167,5 @@ export class Player {
 }
 
 export const PlayerSchema = SchemaFactory.createForClass(Player);
+PlayerSchema.index({ evaluation: -1 });
+PlayerSchema.index({ firstName: 1, lastName: 1 });
