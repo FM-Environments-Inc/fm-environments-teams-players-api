@@ -123,3 +123,5 @@ export class Team {
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);
+TeamSchema.index({ evaluation: -1 });
+TeamSchema.index({ name: 1 });
