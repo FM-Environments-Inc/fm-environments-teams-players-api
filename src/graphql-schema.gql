@@ -88,6 +88,12 @@ type Team {
   updatedAt: DateTime!
   deletedAt: DateTime!
   archivedAt: DateTime!
+  wins: Float!
+  draws: Float!
+  loses: Float!
+  goals: Float!
+  goalsAgainst: Float!
+  goalsDifference: Float!
 }
 
 type Query {
