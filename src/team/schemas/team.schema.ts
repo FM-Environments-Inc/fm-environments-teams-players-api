@@ -120,6 +120,24 @@ export class Team {
   @Prop()
   @Field()
   archivedAt?: Date | null = null;
+
+  @Field()
+  wins?: number = 0;
+
+  @Field()
+  draws?: number = 0;
+
+  @Field()
+  loses?: number = 0;
+
+  @Field()
+  goals?: number = 0;
+
+  @Field()
+  goalsAgainst?: number = 0;
+
+  @Field()
+  goalsDifference?: number = 0;
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);
