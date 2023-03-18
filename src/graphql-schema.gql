@@ -56,6 +56,9 @@ type Player {
   createdAt: DateTime!
   updatedAt: DateTime!
   playerTeam: PlayerTeam
+  goals: Float
+  assists: Float
+  matches: Float
 }
 
 """

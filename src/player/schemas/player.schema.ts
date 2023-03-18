@@ -164,6 +164,15 @@ export class Player {
 
   @Field(() => PlayerTeam, { nullable: true })
   playerTeam: PlayerTeam;
+
+  @Field({ nullable: true })
+  goals?: number = 0;
+
+  @Field({ nullable: true })
+  assists?: number = 0;
+
+  @Field({ nullable: true })
+  matches?: number = 0;
 }
 
 export const PlayerSchema = SchemaFactory.createForClass(Player);
