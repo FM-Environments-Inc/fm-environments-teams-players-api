@@ -17,9 +17,10 @@ export class TeamRepository {
     sortOptions = '',
     skip = 0,
     limit = 1000,
+    select?: string,
   ): Promise<Team[]> {
     return this.teamModel
-      .find(teamsFilterQuery)
+      .find(teamsFilterQuery, select)
       .sort(sortOptions)
       .skip(skip)
       .limit(limit)

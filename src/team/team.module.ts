@@ -6,6 +6,7 @@ import { join } from 'path';
 import { TeamService } from './team.service';
 import { TeamRepository } from './team.repository';
 import { TeamResolver } from './team.resolver';
+import { TeamRPCService } from './team-rpc.service';
 import { Team, TeamSchema } from './schemas/team.schema';
 import { CountryModule } from '../country/country.module';
 import { RegionModule } from '../region/region.module';
@@ -36,6 +37,7 @@ import { PlayerModule } from '../player/player.module';
       },
     },
   ],
+  controllers: [TeamRPCService],
   exports: [TeamRepository],
 })
 export class TeamModule {}

@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { graphqlUploadExpress } from 'graphql-upload';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { join } from 'path';
 
 import { AppModule } from './app.module';
 
@@ -16,6 +18,15 @@ async function bootstrap() {
       transform: true,
     }),
   );
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.GRPC,
+    options: {
+      package: 'teams',
+      protoPath: join(process.cwd(), 'src/proto/teams.proto'),
+      url: `${process.env.HOST}:${process.env.GRPC_PORT}`,
+    },
+  });
+  app.startAllMicroservices();
   await app.listen(process.env.SERVER_PORT || 3006);
 }
 bootstrap();
