@@ -1,5 +1,7 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ClientProxyFactory, Transport } from '@nestjs/microservices';
+import { join } from 'path';
 
 import { PlayerService } from './player.service';
 import { PlayerRepository } from './player.repository';
@@ -14,7 +16,24 @@ import { TeamModule } from '../team/team.module';
     CountryModule,
     forwardRef(() => TeamModule),
   ],
-  providers: [PlayerResolver, PlayerRepository, PlayerService],
+  providers: [
+    PlayerResolver,
+    PlayerRepository,
+    PlayerService,
+    {
+      provide: 'MATCHES_PACKAGE',
+      useFactory: () => {
+        return ClientProxyFactory.create({
+          transport: Transport.GRPC,
+          options: {
+            package: 'matches',
+            protoPath: join(process.cwd(), 'src/proto/matches.proto'),
+            url: `${process.env.MATCHES_RPC_URL}`,
+          },
+        });
+      },
+    },
+  ],
   exports: [PlayerRepository],
 })
 export class PlayerModule {}
